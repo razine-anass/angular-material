@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-material';
+  test = 1;
+  notif = 'anass';
+  progressSpinner = 100;
+  spinner = false;
+
+  loadSprinner(){
+    if(this.spinner) {
+      this.spinner = false;
+    } else {
+      this.spinner = true;
+    }
+    
+  }
 }
