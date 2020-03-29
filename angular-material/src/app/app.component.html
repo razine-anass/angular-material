@@ -1,71 +1,110 @@
 
 <div class="container">
   <div class="col-lg-6">
-    
-<div style="background-color: aquamarine;margin: 5px;">
-  <div>
-    <h2>ToggleGroup</h2>
-  </div>
-  <hr>
-  <div>
-    <mat-button-toggle #toggleBtn>
-      {{toggleBtn.checked}}
-    </mat-button-toggle>
-  </div>  
-</div>
+    <div style="background-color: aquamarine;margin: 5px;">
+      <div>
+        <h2>ToggleGroup</h2>
+      </div>
+      <hr>
+      <div>
+        <mat-button-toggle #toggleBtn>
+          {{toggleBtn.checked}}
+        </mat-button-toggle>
+      </div>  
+    </div>
 
-<div style="background-color: aquamarine;margin: 5px;">
-<div>
-  <h2>Toggle</h2>
-</div>
-<hr>
-<div>
-<mat-button-toggle-group #toggleGr="matButtonToggleGroup">
-  <mat-button-toggle value="angula">angular</mat-button-toggle>
-  <mat-button-toggle value="react">react</mat-button-toggle>
-  <mat-button-toggle value="vue">Vue</mat-button-toggle>
-</mat-button-toggle-group>
-{{toggleGr.value}}
-</div>
-</div>
+      <div style="background-color: aquamarine;margin: 5px;">
+      <div>
+        <h2>Toggle</h2>
+      </div>
+      <hr>
+      <div>
+      <mat-button-toggle-group #toggleGr="matButtonToggleGroup">
+        <mat-button-toggle value="angula">angular</mat-button-toggle>
+        <mat-button-toggle value="react">react</mat-button-toggle>
+        <mat-button-toggle value="vue">Vue</mat-button-toggle>
+      </mat-button-toggle-group>
+      {{toggleGr.value}}
+      </div>
+      </div>
 
-<div style="background-color: aquamarine;margin: 5px;">
-<div style="height: 50px;height: 50px;" style="display: flex;justify-content: flex-end;">
-  <h2 style="text-decoration:underline;text-align: justify;font-size: medium;">matBadge</h2>
-</div>
-<hr>
-<div style="display: flex;flex-direction: row;justify-content: space-between;">
- <div style="height: 50px;height: 50px;border: 1px solid black;margin: 10px;">
-   <mat-icon>remove_shopping_cart</mat-icon>
-</div>
-<div style="height: 50px;height: 50px;border: 1px solid black;margin: 10px;">
-  <span [matBadge]="'razine'" matBadgePosition="before|after"matBadgeColor="accent" [matBadgeHidden]="test == 0">Notication</span>
-</div>
-</div>
-</div>
-<br>
-<div style="background-color: rgb(192, 247, 193);display: flex;flex-direction: column;">
-<div>
- <h2 style="text-decoration: underline;font-size: 15px;float: right;">Progress Spinner</h2>
-</div> 
-<div>
-  <hr>
-</div>
-<!--
- <div> 
-   <mat-progress-spinner [value]="progressSpinner"></mat-progress-spinner>
- </div>-->
- <div>
-   <button (click)="loadSprinner()">Cliquer</button>
-   <mat-spinner *ngIf="spinner"></mat-spinner>
- </div>
-</div>
-
-  </div>
-  <div class="col-lg-6">
-
-  </div>
-
+      <div style="background-color: aquamarine;margin: 5px;">
+          <div style="height: 50px;height: 50px;" style="display: flex;flex-direction: row;justify-content: space-between;">
+            <h2 style="text-decoration:underline;text-align: justify;font-size: medium;">matBadge</h2>
+            <h2 style="text-decoration:underline;text-align: justify;font-size: medium;">matIcone</h2>
+          </div>
+        <hr>
+          <div style="display: flex;flex-direction: row;justify-content: space-between;">
+              <div style="height: 50px;height: 50px;border: 1px solid black;margin: 10px;">
+                <mat-icon>remove_shopping_cart</mat-icon>
+              </div>
+              <div style="height: 50px;height: 50px;border: 1px solid black;margin: 10px;">
+                <span [matBadge]="'razine'" matBadgePosition="before|after"
+                      matBadgeColor="accent" [matBadgeHidden]="test == 0">Notication</span>
+              </div>
+          </div>
+      </div>
+      <br>
+    <div style="background-color: rgb(192, 247, 193);display: flex;flex-direction: column;">
+        <div>
+        <h2 style="text-decoration: underline;font-size: 15px;float: right;">Progress Spinner</h2>
+        </div> 
+        <div>
+          <hr>
+        </div>
+        <!--
+        <div> 
+          <mat-progress-spinner [value]="progressSpinner"></mat-progress-spinner>
+        </div>-->
+        <div>
+          <button (click)="loadSprinner()">{{value}}</button>
+          <mat-spinner *ngIf="spinner" color="accent"></mat-spinner>
+        </div>
+       </div>
+   </div>
+   <div class="col-lg-6">
+      <div style="background-color: aquamarine;margin:15px;">
+          <div>
+            <h2 style="text-decoration:underline;font-size: 15px;float: right;">Nav-Bar</h2>
+          </div>
+          <div>
+            <mat-toolbar color="primary" style="justify-content: space-between;">
+              <div>Mon site</div>
+              <div style="justify-content: space-between;">
+                <span style="padding-right: 1rem;"><a href="#">Home</a></span>                  
+                <span style="padding-right: 1rem;"><a href="#">About</a></span>      
+                <span style="padding-right: 1rem;"><a href="#">Service</a></span>                  
+              </div>
+            </mat-toolbar>
+          </div>
+       </div>
+       <div style="background-color: aquamarine;margin:5px;display: flex;
+                  flex-direction: column; height:200px;">
+        <div>
+          <h2 style="text-decoration:underline;font-size: 15px;float: right;">Nav-Bar</h2>
+        </div>
+        
+        <div>
+          <mat-sidenav-container style="height: 100%;background-color: aquamarine;">
+            <mat-sidenav #refTemVar mode="side" 
+            [(opened)]="opened" (opened)="log('opened')" (closed)="log('closed')"
+            style="padding:16px;background-color:silver;"
+             >
+               <ul>
+                 <li>Anass</li>
+                 <li>Elias</li>
+               </ul>
+            </mat-sidenav>
+            <mat-sidenav-content style="padding:16px;">Main
+              <button (click)="opened=!opened" style="margin-right: 2px;">Afficher le SideNav</button>
+              <button (click)="refTemVar.open()" style="margin-right: 2px;">Open</button>
+              <button (click)="refTemVar.close()" style="margin-right: 2px;">Close</button>
+              <button (click)="refTemVar.toggle()" style="margin-right: 2px;">Toggle</button>
+            </mat-sidenav-content>
+          </mat-sidenav-container>
+        </div>
+     </div>
+    </div>
 </div>
 
  

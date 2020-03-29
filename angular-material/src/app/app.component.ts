@@ -11,13 +11,19 @@ export class AppComponent {
   notif = 'anass';
   progressSpinner = 100;
   spinner = false;
+  value = 'apparaitre';
+  opened = false;
 
   loadSprinner(){
     if(this.spinner) {
       this.spinner = false;
+      this.value = 'apparaitre'
     } else {
       this.spinner = true;
+      this.value = 'disparaitre'
     }
-    
+  }
+  log(sm) {
+    console.log(sm);
   }
 }
