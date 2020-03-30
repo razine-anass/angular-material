@@ -29,16 +29,16 @@
       </div>
 
       <div style="background-color: aquamarine;margin: 5px;">
-          <div style="height: 50px;height: 50px;" style="display: flex;flex-direction: row;justify-content: space-between;">
+          <div style="height: 50px;" style="display: flex;flex-direction: row;justify-content: space-between;">
             <h2 style="text-decoration:underline;text-align: justify;font-size: medium;">matBadge</h2>
             <h2 style="text-decoration:underline;text-align: justify;font-size: medium;">matIcone</h2>
           </div>
         <hr>
           <div style="display: flex;flex-direction: row;justify-content: space-between;">
-              <div style="height: 50px;height: 50px;border: 1px solid black;margin: 10px;">
+              <div style="height: 50px;border: 1px solid black;margin: 10px;">
                 <mat-icon>remove_shopping_cart</mat-icon>
               </div>
-              <div style="height: 50px;height: 50px;border: 1px solid black;margin: 10px;">
+              <div style="height: 50px;border: 1px solid black;margin: 10px;">
                 <span [matBadge]="'razine'" matBadgePosition="before|after"
                       matBadgeColor="accent" [matBadgeHidden]="test == 0">Notication</span>
               </div>
@@ -79,7 +79,7 @@
           </div>
        </div>
        <div style="background-color: aquamarine;margin:5px;display: flex;
-                  flex-direction: column; height:200px;">
+                  flex-direction: column; height:200px; margin: 5px;">
         <div>
           <h2 style="text-decoration:underline;font-size: 15px;float: right;">Nav-Bar</h2>
         </div>
@@ -104,6 +104,40 @@
           </mat-sidenav-container>
         </div>
      </div>
+     <!--New Item -->
+     <div style="background-color: aquamarine;margin: 5px;height: 200px;display: flex;
+                flex-direction: column;">
+       <div>
+        <strong><h2 style="text-decoration: underline;font-size: 15x;float: right;">matMenu</h2></strong>
+       </div>
+       <div><hr></div>
+       <div style="display: flex;flex-direction: row;justify-content: space-between;">
+          <div>
+            <mat-menu #monMenu="matMenu" xPosition="after" yPosition="below">
+              <button mat-menu-item [matMenuTriggerFor]="monMenu2">FrontEnd</button>
+              <button mat-menu-item>BackEnd</button>
+            </mat-menu>
+            <button mat-flat-button [matMenuTriggerFor]="monMenu">Menu</button>
+            <mat-menu #monMenu2="matMenu" yPosition="below">
+              <button mat-menu-item>Angular</button>
+              <button mat-menu-item>React</button>
+              <button mat-menu-item>Vue</button>
+            </mat-menu>
+          </div>
+          <div>
+            <mat-menu #monMenu3="matMenu" yPosition="below" >
+              <ng-template matMenuContent let-nom="no" let-hobby="hobb">
+                <button mat-menu-item>Java- {{nom}} {{hobby}}</button>
+                <button mat-menu-item>C- {{nom}} {{hobby}}</button>
+                <button mat-menu-item>Php- {{nom}} {{hobby}}</button>
+              </ng-template>
+            </mat-menu>
+            <button [matMenuTriggerData]="{ no: 'razine',hobb: 'fleha'}" [matMenuTriggerFor]="monMenu3" >Language</button>
+            <button [matMenuTriggerData]="{ no: 'anass',hobb: 'sex'}"  [matMenuTriggerFor]="monMenu3" >Language-Bak</button>
+          </div>
+       </div>
+     </div>
+     <!--fin-->
     </div>
 </div>
 
