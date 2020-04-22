@@ -1,0 +1,16 @@
+<h2>{{ name }}</h2>
+<p>Status : {{ status }}</p>
+<a routerLink="/appareils">Retour</a>
+
+<ul class="list-group">
+<!--The ? allows you to check for the existence an object before attempting to access its properties in your interpolations-->
+    <li *ngFor="let marque of marques;let i = index;trackBy:marque?.id"   class="list-group-item">
+        {{ marque?.id }}
+        
+        <input #newMarque 
+                         (keyup.enter)="addMarque(newMarque.value)"
+                         (blur)="addMarque(newMarque.value)">
+                         
+     <button (click)=removeMarque(newMarque.value)>Ajouter</button>    
+    </li>
+</ul>

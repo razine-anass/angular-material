@@ -1,0 +1,20 @@
+<li [ngClass]="{'list-group-item': true, 
+                'list-group-item-danger': status === 'eteint',
+                'list-group-item-success': status === 'allume'}">
+    <div style="height: 20px;width: 20px;"
+   
+    [ngStyle]="{'background-color' : getBackroundColor()}"></div>
+
+
+ <h4 [ngStyle]="{'color' : getColor()}">ceci est {{ nomAppareil }} -- Status : {{ getStatus() }}</h4>
+ <input type="text" class="form-control" [(ngModel)]="nomAppareil">
+ <!--on met routerLink entre deux crochet pour le dataBinding puisqu'on veut envoyer une variable id-->
+<!-- <a [routerLink]="[param]">Détails</a>-->
+ <a [routerLink]="[ '/appareils', param]">name</a>
+ <button class="btn btn-success" 
+        (click)="onSwitchOne()" 
+        [disabled]="status === 'allume'">Allumer</button>
+ <button class="btn btn-danger" 
+         (click)="onSwitchOff()"
+         [disabled] = "status === 'eteint'">Eteindre</button>
+</li>

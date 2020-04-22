@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <!-- ref est une reference local de l'objet ngFrom qui represente le formulaire-->
+    <!--submit permet de soumettre le formualaire sans cliquer sur le boutton-->
+     <form (ngSubmit)="onSubmit(ref)" #ref="ngForm">
+        <div class="form-group">
+          <label for="name">
+            Nom de l'appareil
+          </label>
+          <input type="text" id="name" class="form-control" name="name" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="status">
+            Etat de l'appreil
+          </label>
+          <select  id="status" class="form-control" name="status" [ngModel]="defaultValueSelect">
+            <option value="allume">Allumé</option>
+            <option value="eteint">Eteint</option>
+          </select>
+        </div>
+        <!--il faut tjrs utiliser des boutons submit pour soumettre des formulaires-->
+         <button type="submit" class="btn btn-primary" [disabled]="ref.invalid">Submit</button>
+     </form>
+     
+  </div>
+</div>

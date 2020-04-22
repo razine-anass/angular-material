@@ -1,0 +1,22 @@
+<nav class="navbar navbar-dafault">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <!-- routerLink permet de remplacer routerOutlet par le compenont selectionné 
+      et permet d'eviter la rechargment de la page alors que href recharge toute la page -->
+      <li routerLinkActive="active"><a routerLink="/auth">Authentification</a></li>
+      <li routerLinkActive="active"><a routerLink="/appareils">Appareils</a></li>
+      <li routerLinkActive="active"><a routerLink="/form">Formulaire</a></li>
+      <li routerLinkActive="active"><a routerLink="/users">Utilisateurs</a></li>
+    </ul>
+    <div class="navbar-right">
+      <p>le compteur est: {{ secondes }}</p>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
