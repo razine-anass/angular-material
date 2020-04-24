@@ -1,0 +1,18 @@
+<h2>Employee Details</h2> 
+
+<hr/>
+<div *ngIf="chantier">
+  <div>
+    <label><b>First Name: </b></label> {{chantier.nom}}
+  </div>
+  <div>
+    <label><b>Last Name: </b></label> {{chantier.id}}
+  </div>
+  <div>
+    <label><b>Email Id: </b></label> {{chantier.adress}}
+  </div>  
+</div>
+
+<br>
+<br>
+<button (click)="back()" class="btn btn-primary">Back to Chantier List</button><br>

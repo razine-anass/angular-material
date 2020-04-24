@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="row">
+        <div id="custom-search-input">
+            <div class="input-group col-md-3" style="text-align: center">
+<!--<input type="text" class="search-query form-control" placeholder="Chercher par nom"  name="nom" [(ngModel)]="nom"/>
+                <span class="input-group-btn">
+                <button class="btn btn-danger" type="button" (click)="findChantierByNom()">
+                <span class=" glyphicon glyphicon-search"></span>
+                </button>
+                </span>-->
+                <div class="col-sm-3 col-md-3">        
+                <label style="font-weight: normal;
+                white-space: nowrap;
+                text-align: left;">Search
+                <input type="search" placeholder="Chercher par nom" 
+                  #refSearch (keyup)="findChantierByNom(refSearch.value)" (search)="findChantierByNom()"
+                  class="form-control input-sm" aria-controls="main_table_chantier"
+                  style="display: inline-block;">
+                </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+<div class="panel-heading">
+    <h2>Employee List</h2>
+</div>
+<div class="panel-body">
+    <table id="main_table_chantier" class="table table-striped table-hover">
+    <thead>
+        <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>ADRESS</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let chantier of chantier; let i=index">
+        <td>{{chantier.id}}</td>
+        <td>{{chantier.nom}}</td>
+        <td>{{chantier.adress}}</td>
+        <td><button (click)="deleteChantier(chantier.id)" class="btn btn-danger">
+               <span class="glyphicon glyphicon-remove">Delete</span>
+            </button>
+            <button (click)="updateChantier(chantier.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+            <button (click)="chantierDetails(chantier.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+        </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+</div>
+<button class="btn btn-primary" (click)="getChantier()">Envoyer</button>
+<hr>
+<div class="mat-elevation-z8">
+    &nbsp;&nbsp;
+    &nbsp;&nbsp;<mat-form-field>
+    <mat-label>Filtrer</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Ex. ium">
+</mat-form-field>
+
+<table id="mat_table_chantier" mat-table matSort  [dataSource]="dataSource" 
+       class="table table-striped table-hover">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+      <td mat-cell *matCellDef="let chantier"> {{chantier.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let chantier"> {{chantier.nom}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="adress">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+      <td mat-cell *matCellDef="let chantier"> {{chantier.adress}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let chantier"> 
+            <button (click)="deleteChantier(chantier.id)" class="btn btn-danger">
+                <span class="glyphicon glyphicon-remove">Supprimer</span>
+             </button>
+             <button (click)="updateChantier(chantier.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+             <button (click)="chantierDetails(chantier.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+        </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
