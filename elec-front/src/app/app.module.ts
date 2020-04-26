@@ -13,6 +13,7 @@ import { BodyModule } from './body/body.module';
 import { HeaderComponent } from './header/header/header.component';
 import { DonneeModule } from './donnee/donnee.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -34,7 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   exports: [HeaderComponent],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

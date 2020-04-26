@@ -24,8 +24,15 @@ export class ChantierService {
    this.chantierSubject.next(this.chantiers.slice());
   }
 
+  
+
+  //return this.http.get(this.url,{headers,responseType: 'text' as 'json'})
+
   getchantiers(){
-    this.http.get<any[]>(this.url)
+    const headers = new HttpHeaders(
+      { Authorization: 'Basic ' + btoa('razine' + ':' + 'rayane') }
+      );
+    this.http.get<any[]>(this.url,{headers})
     .subscribe(
       (response)=>{
         this.chantiers = response ? response : [];
