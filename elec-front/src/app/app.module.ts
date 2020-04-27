@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 
@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header/header.component';
 import { DonneeModule } from './donnee/donnee.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './services/auth.service';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 
@@ -35,7 +36,10 @@ import { AuthService } from './services/auth.service';
     BrowserAnimationsModule
   ],
   exports: [HeaderComponent],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorService, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

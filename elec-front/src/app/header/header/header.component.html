@@ -2,18 +2,22 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li  routerLinkActive="active">
-         <a routerLink="body/bord/formulaire">Formulaire</a>
+         <a *ngIf="authservice.isUserLoggedIn()" routerLink="body/bord/formulaire">Formulaire</a>
       </li>
         <li  routerLinkActive="active">
-          <a routerLink="body/bord/table">Table</a>
+          <a *ngIf="authservice.isUserLoggedIn()"  routerLink="body/bord/table">Table</a>
       </li>
        <li  routerLinkActive="active">
-         <a routerLink="body/bord/bord">table de bord</a>
+         <a *ngIf="authservice.isUserLoggedIn()"  routerLink="body/bord/bord">table de bord</a>
        </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li  routerLinkActive="active">
-        <a routerLink="auth/auth">Authentification</a>
+        <a *ngIf="!authservice.isUserLoggedIn()"  routerLink="auth/auth">Authentification</a>
+      </li>
+      <li>
+        <!--*ngIf="authservice.isUserLoggedIn()"-->
+        <a *ngIf="authservice.isUserLoggedIn()"  routerLink="auth/logout" class="nav-link">LogOut</a>
       </li>
     </ul>
   </div>

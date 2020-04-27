@@ -24,6 +24,8 @@ export class AuthComponent implements OnInit {
         (data: any)=>{
             console.log(data);
             this.router.navigate(['body/bord/table']);
+        },
+        error => {
         }
       );
    // this.router.navigate(['appareils']);

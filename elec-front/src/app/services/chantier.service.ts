@@ -29,10 +29,9 @@ export class ChantierService {
   //return this.http.get(this.url,{headers,responseType: 'text' as 'json'})
 
   getchantiers(){
-    const headers = new HttpHeaders(
-      { Authorization: 'Basic ' + btoa('razine' + ':' + 'rayane') }
-      );
-    this.http.get<any[]>(this.url,{headers})
+  //  const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa('razine' + ':' + 'rayane') });
+      
+    this.http.get<any[]>(this.url)
     .subscribe(
       (response)=>{
         this.chantiers = response ? response : [];
@@ -109,7 +108,10 @@ export class ChantierService {
   }
 
   updatechantierById(chantier: Chantier) : Observable<any>{
-    return this.http.put<any[]>(this.url,  chantier)
+    const headers = new HttpHeaders(
+      { Authorization: 'Basic ' + btoa('razine' + ':' + 'rayane') }
+      );
+    return this.http.put<any[]>(this.url,  chantier,{headers})
   }
 
   deletechantierById(id: string){
