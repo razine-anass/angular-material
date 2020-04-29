@@ -108,10 +108,11 @@ export class ChantierService {
   }
 
   updatechantierById(chantier: Chantier) : Observable<any>{
-    const headers = new HttpHeaders(
-      { Authorization: 'Basic ' + btoa('razine' + ':' + 'rayane') }
-      );
-    return this.http.put<any[]>(this.url,  chantier,{headers})
+  //  const headers = new HttpHeaders(
+   //   { Authorization: 'Basic ' + btoa('razine' + ':' + 'rayane') }
+   //   );
+    //  return this.http.put<any[]>(this.url,  chantier,{headers})
+    return this.http.put<any[]>(this.url,  chantier)
   }
 
   deletechantierById(id: string){

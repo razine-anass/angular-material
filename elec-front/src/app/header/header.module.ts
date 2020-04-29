@@ -12,9 +12,9 @@ import { LogoutComponent } from '../auth/logout/logout.component';
 
 const appRoutes: Routes = [
   { path : 'auth/auth', component : AuthComponent},
-  { path : 'body/bord/formulaire', component : FormulaireComponent},
+  { path : 'body/bord/formulaire' , canActivate: [AuthGard] ,  component : FormulaireComponent},
   { path : 'body/bord/table', canActivate: [AuthGard] , component : TableComponent},
-  { path : 'body/bord/bord' , component : BordComponent},
+  { path : 'body/bord/bord' , canActivate: [AuthGard]  , component : BordComponent},
   { path : 'auth/logout', component : LogoutComponent}
 ]
 
