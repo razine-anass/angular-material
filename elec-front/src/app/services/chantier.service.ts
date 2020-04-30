@@ -133,4 +133,8 @@ export class ChantierService {
     
     return this.http.delete(this.url+'/'+id);
   }
+
+  public getImage(){
+    return this.http.get(this.url+'/photos');
+  } 
 }

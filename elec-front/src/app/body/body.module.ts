@@ -5,13 +5,18 @@ import { FormulaireComponent } from './formulaire/formulaire.component';
 import { TableComponent } from './table/table.component';
 import { BordComponent } from './bord/bord.component';
 import { DonneeModule } from '../donnee/donnee.module';
+import { Affichage1Component } from './affichage1/affichage1.component';
+import { Affichage2Component } from './affichage2/affichage2.component';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
-  declarations: [FormulaireComponent, TableComponent, BordComponent],
+  declarations: [FormulaireComponent, TableComponent, BordComponent,Affichage1Component,Affichage2Component],
   imports: [
     CommonModule,
     DonneeModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports:[FormulaireComponent, TableComponent, BordComponent]
 })

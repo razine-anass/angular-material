@@ -1,3 +1,65 @@
-<p>
-  bord works!
-</p>
+<div class="row">
+  <div class="col-lg-2 col-lg-offset-2">
+    <!-- ref est une reference local de l'objet ngFrom qui represente le formulaire-->
+    <!--submit permet de soumettre le formualaire sans cliquer sur le boutton-->
+     <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="username">
+            Login :
+          </label>
+          <input type="file" id="image" class="form-control" name="image" [(ngModel)]="image" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+     </form>
+  </div>
+  <div class="col-lg-8">
+    <div *ngIf="chantierImages">
+      <div *ngFor="let image of chantierImages; trackBy:image.id">
+        <div class="col-md-3">
+       <div class="panel panel-default">
+        <div class="panel-heading">{{image.nom}}</div>
+        <div class="panel-body">
+          <table>
+              <tr>
+                <td>
+                   <img src="{{image}}" alt="">
+                </td>
+              </tr>
+            <!--  <tr>
+                <td>
+                   {{}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                   {{}}
+                </td>
+              </tr>-->
+          </table>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div style="border: 1px solid black;" class="col-md-3">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a  routerLink="/body/bord/bord/affichage1">affichage 1</a>
+      </li>
+      <li class="list-group-item">
+       <a  routerLink="affichage2">affichage 2</a>
+      </li>
+      <li class="list-group-item">
+        <p>machie</p> 
+      </li>
+    </ul>
+   </div> 
+   <div style="border: 1px solid black;" class="col-md-9">
+     
+    <router-outlet></router-outlet>
+   </div>
+</div>
