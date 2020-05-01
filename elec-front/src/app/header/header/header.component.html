@@ -10,27 +10,35 @@
 </div>
 <div class="container">
   <nav class="nav navbar-default">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li  routerLinkActive="active">
-         <a *ngIf="authservice.isUserLoggedIn()" routerLink="body/bord/formulaire">Formulaire</a>
-      </li>
+   <div class="container-fluid">
+      <ul class="nav navbar-nav">
         <li  routerLinkActive="active">
-          <a *ngIf="authservice.isUserLoggedIn()"  routerLink="body/bord/table">Table</a>
-      </li>
-       <li  routerLinkActive="active">
-         <a *ngIf="authservice.isUserLoggedIn()"  routerLink="body/bord/bord">table de bord</a>
-       </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li  routerLinkActive="active">
-        <a *ngIf="!authservice.isUserLoggedIn()"  routerLink="auth/auth">Authentification</a>
-      </li>
-      <li>
-        <!--*ngIf="authservice.isUserLoggedIn()"-->
-        <a *ngIf="authservice.isUserLoggedIn()"  routerLink="auth/logout" class="nav-link">LogOut</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+          <a *ngIf="authservice.isUserLoggedIn()" routerLink="body/bord/formulaire">Tableau de bord</a>
+        </li>
+          <li  routerLinkActive="active">
+            <a *ngIf="authservice.isUserLoggedIn()"  routerLink="body/bord/table">Chantier</a>
+        </li>
+        <li  routerLinkActive="active">
+          <a *ngIf="authservice.isUserLoggedIn()"  routerLink="body/bord/bord">Client</a>
+        </li>
+        <li  routerLinkActive="active">
+          <a   >Historique</a>
+        </li>
+        <li routerLinkActive="active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+             aria-expanded="false">Dropdown <span class="caret"></span>
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li  routerLinkActive="active">
+          <a *ngIf="!authservice.isUserLoggedIn()"  routerLink="auth/auth">Authentification</a>
+        </li>
+        <li>
+          <!--*ngIf="authservice.isUserLoggedIn()"-->
+          <a *ngIf="authservice.isUserLoggedIn()"  routerLink="auth/logout" class="nav-link">LogOut</a>
+        </li>
+      </ul>
+    </div>
+ </nav>
 </div>

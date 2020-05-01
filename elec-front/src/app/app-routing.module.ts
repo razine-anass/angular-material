@@ -34,8 +34,9 @@ const routes: Routes = [
                                                                         pathMatch: 'full'
                                                                       }
                                                                     ],canActivate:  [AuthGard]
-  },
-  { path: '**', component: FormulaireComponent },
+  }
+  //,
+  //{ path: '**', component: FormulaireComponent },
 ]
 
 @NgModule({
