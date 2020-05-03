@@ -33,7 +33,8 @@ const routes: Routes = [
                                                                         redirectTo: 'affichage1',
                                                                         pathMatch: 'full'
                                                                       }
-                                                                    ],canActivate:  [AuthGard]
+                                                                    ]
+                                                                    ,canActivate:  [AuthGard]
   }
   //,
   //{ path: '**', component: FormulaireComponent },

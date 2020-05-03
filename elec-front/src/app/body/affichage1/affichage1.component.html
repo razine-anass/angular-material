@@ -26,10 +26,56 @@
       <input type="button" (click)="getImage()" value="Get Image">
   </div>
 </div>
+<!--
 <div class="container row">
   <div class="col-md-12">
       <div *ngIf=retrievedImage>
           <img [src]="retrievedImage" style="height: 150px;width: 150px;">
       </div>
+  </div>
+</div>
+-->
+<hr/>
+
+<div class="container row">
+  <div class="col-md-12">
+      <div *ngIf=listImage>
+          <div *ngFor="let img of listImage">
+             <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">nom</div>
+                        <div class="panel-body">
+                            <table>
+                              <tr>
+                              <td rowspan="3">
+                                <img [src]="img" style="height: 10px;width: 100px;">
+                                <button><span class="glyphicon-edit"></span></button>
+                              </td>
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+             </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+    <button class="btn btn-primary" (click)="getImages()">Charger tout les photos</button>
+   </div>
+</div>
+<br>
+<div class="container row">
+  <div>
+    <input type="file" (change)="onFileSelected($event)">
+    <button class="btn btn-primary" (click)="onUploade()">Envoyer</button>
+  </div>
+  <div>
+    <input (keyup)="onKey($event)">
+     <p>{{values}}</p>
+  </div>
+  <div>
+    <input #box (keyup.enter)="update(box.value)" (blur)="update(box.value)">
+ 
+		<p>{{value}}</p>
   </div>
 </div>
