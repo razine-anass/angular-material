@@ -66,6 +66,8 @@
 <br>
 <div class="container row">
   <div>
+    <!--le chargement d'un fichier declenche la creation d'un objet $event on recuper cet object
+    on l'envoit au component à voir https://www.youtube.com/watch?v=YkvqLNcJz3Y -->
     <input type="file" (change)="onFileSelected($event)">
     <button class="btn btn-primary" (click)="onUploade()">Envoyer</button>
   </div>
