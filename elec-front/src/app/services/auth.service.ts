@@ -71,6 +71,8 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     this.isAuth = false;
+    this.usernamejwt = undefined;
+    this.roles = undefined;
   }
 
   parseJwt(token:string){

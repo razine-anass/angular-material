@@ -38,7 +38,7 @@
           </ul>
         </li>
         <li routerLinkActive="active">
-          <a *ngIf="authservice.isAdmin() && authservice.isUserLoggedIn()" routerLink="body/user">Utilisateurs</a>
+          <a *ngIf="authservice.isAdmin()" routerLink="body/user">Utilisateurs</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
