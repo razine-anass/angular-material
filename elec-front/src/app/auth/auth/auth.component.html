@@ -1,22 +1,24 @@
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
-    <!-- ref est une reference local de l'objet ngFrom qui represente le formulaire-->
-    <!--submit permet de soumettre le formualaire sans cliquer sur le boutton-->
-     <form (ngSubmit)="onSubmit(ref)" #ref="ngForm">
-        <div class="form-group">
-          <label for="username">
-            Login :
-          </label>
-          <input type="text" id="username" class="form-control" name="username" ngModel required>
+    <div class="panel panel-default">
+      <div class="panel-heading">Authentification</div>
+        <div class="panel-body">
+        <!-- ref est une reference local de l'objet ngFrom qui represente le formulaire-->
+          <!--submit permet de soumettre le formualaire sans cliquer sur le boutton-->
+            <form (ngSubmit)="onSubmit(ref)" #ref="ngForm">
+              <div class="form-group">
+                <label for="username">Login :</label>
+                <input type="text" id="username" class="form-control" name="username" ngModel required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password :</label>
+                <input type="password" id="password" class="form-control" name="password" ngModel required>
+              </div>
+              <!--il faut tjrs utiliser des boutons submit pour soumettre des formulaires-->
+              <button type="submit" class="btn btn-primary" [disabled]="ref.invalid">Submit</button>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="password">
-            Password :
-          </label>
-          <input type="text" id="password" class="form-control" name="password" ngModel required>
-        </div>
-        <!--il faut tjrs utiliser des boutons submit pour soumettre des formulaires-->
-         <button type="submit" class="btn btn-primary" [disabled]="ref.invalid">Submit</button>
-     </form>
+    </div>
   </div>
 </div>
+

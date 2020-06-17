@@ -8,10 +8,14 @@ import { DonneeModule } from '../donnee/donnee.module';
 import { Affichage1Component } from './affichage1/affichage1.component';
 import { Affichage2Component } from './affichage2/affichage2.component';
 import { RouterModule } from '@angular/router';
+import { JwtComponent } from './jwt/jwt.component';
+import { JwtChantierComponent } from './jwt-chantier/jwt-chantier.component';
+import { JwtUserComponent } from './jwt-user/jwt-user.component';
+import { JwtChantierDetailsComponent } from './jwt-chantier-details/jwt-chantier-details.component';
 
 
 @NgModule({
-  declarations: [FormulaireComponent, TableComponent, BordComponent,Affichage1Component,Affichage2Component],
+  declarations: [FormulaireComponent, TableComponent, BordComponent,Affichage1Component,Affichage2Component, JwtComponent, JwtChantierComponent, JwtUserComponent, JwtChantierDetailsComponent],
   imports: [
     CommonModule,
     DonneeModule,

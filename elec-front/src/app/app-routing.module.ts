@@ -8,6 +8,8 @@ import { BordComponent } from './body/bord/bord.component';
 import { Affichage1Component } from './body/affichage1/affichage1.component';
 import { Affichage2Component } from './body/affichage2/affichage2.component';
 import { AuthGard } from './services/auth-gard.service';
+import { JwtComponent } from './body/jwt/jwt.component';
+import { JwtChantierDetailsComponent } from './body/jwt-chantier-details/jwt-chantier-details.component';
 
 //const routes: Routes = [];
 
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path : 'body/bord/formulaire' , canActivate: [AuthGard] , component : FormulaireComponent},
   { path : 'body/bord/table' , canActivate: [AuthGard] , component : TableComponent},
   { path : 'auth/logout', component : LogoutComponent},
+  { path : 'body/jwt', component : JwtComponent, children:[ {path: 'details/:id',component: JwtChantierDetailsComponent} ]},
   { path : '', redirectTo:'body/bord/formulaire',pathMatch:'full'},
   { path : 'body/bord/bord' ,  component : BordComponent, children: [
                                                                       {

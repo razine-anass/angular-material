@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm, ReactiveFormsModule  } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { JwtHelperService } from "@auth0/angular-jwt";
+
 
 @Component({
   selector: 'app-auth',
@@ -11,15 +13,20 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
+  token:string;
+  authError:string;
+  username:string;
+  roles:Array<string>;
+
   constructor(private authService: AuthService,
               private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSubmit(form: NgForm){
+  onSubmit1(form: NgForm){
     console.log(form);
-    this.authService.login(form.value.username,form.value.password)
+    this.authService.login1(form.value.username,form.value.password)
       .subscribe(
         (data: any)=>{
             console.log(data);
@@ -31,4 +38,35 @@ export class AuthComponent implements OnInit {
    // this.router.navigate(['appareils']);
   }
 
+  onSubmit(form: NgForm){
+    this.authService.login(form.value.username,form.value.password).subscribe(
+      response=>{
+          this.token = response.headers.get('Authorization');
+          localStorage.setItem('token',this.token);
+          this.router.navigate(['body/bord/table']);
+          this.parseJwt();
+      },error=>{
+          if(error.status == 403){
+             this.authError = 'Mot de passe invalide';
+          } else {
+            this.authError = 'problème de connexion';
+          }
+      }
+    );
+  }
+
+  parseJwt(){
+    const helper = new JwtHelperService();
+ 
+    const decodedToken = helper.decodeToken(this.token);
+    this.username = decodedToken.sub;
+    localStorage.setItem('username',this.username);
+
+    this.roles = decodedToken.roles;
+  
+    console.log("admin"+this.roles);
+  
+
+  }
+  
 }

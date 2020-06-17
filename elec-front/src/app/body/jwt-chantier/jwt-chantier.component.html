@@ -1,0 +1,7 @@
+<ul *ngIf="chantiers" class="list-group">
+  <li [ngClass]="active == chantier.id? 'active':'' " *ngFor="let chantier of chantiers; let i=index" class="list-group-item"> 
+   <!--<a  [routerLink]="[ '/body/jwt/details', chantier.id ]">{{chantier.nom}}</a> -->  
+    <span style="cursor: pointer;" (click)="getChantier(chantier.id)">{{chantier.nom}}</span> 
+  </li>
+</ul>
+
