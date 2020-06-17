@@ -73,10 +73,10 @@ export class AuthService {
     this.isAuth = false;
   }
 
-  parseJwt(){
+  parseJwt(token:string){
     const helper = new JwtHelperService();
  
-    const decodedToken = helper.decodeToken(this.token);
+    const decodedToken = helper.decodeToken(token);
     this.username = decodedToken.sub;
     localStorage.setItem('username',this.username);
 
@@ -86,9 +86,22 @@ export class AuthService {
   }
 
   isAdmin(){
-    return this.roles.indexOf('ROLE_ADMIN')>=0;
+    if(this.roles != null){
+      return this.roles.indexOf('ROLE_ADMIN')>=0;
+    }
+    return false;
   }
   isUser(){
+    if(this.roles != null){
     return this.roles.indexOf('ROLE_USER')>=0;
+    }
+    return false;
+  }
+
+  nomUser(){
+    if (this.usernamejwt!=null){
+      return this.usernamejwt;
+    }
+    return '';
   }
 }

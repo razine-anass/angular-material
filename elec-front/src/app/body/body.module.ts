@@ -12,10 +12,11 @@ import { JwtComponent } from './jwt/jwt.component';
 import { JwtChantierComponent } from './jwt-chantier/jwt-chantier.component';
 import { JwtUserComponent } from './jwt-user/jwt-user.component';
 import { JwtChantierDetailsComponent } from './jwt-chantier-details/jwt-chantier-details.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
-  declarations: [FormulaireComponent, TableComponent, BordComponent,Affichage1Component,Affichage2Component, JwtComponent, JwtChantierComponent, JwtUserComponent, JwtChantierDetailsComponent],
+  declarations: [FormulaireComponent, TableComponent, BordComponent,Affichage1Component,Affichage2Component, JwtComponent, JwtChantierComponent, JwtUserComponent, JwtChantierDetailsComponent, UserComponent],
   imports: [
     CommonModule,
     DonneeModule,

@@ -44,7 +44,7 @@ export class AuthComponent implements OnInit {
           this.token = response.headers.get('Authorization');
           localStorage.setItem('token',this.token);
           this.router.navigate(['body/bord/table']);
-          this.authService.parseJwt();
+          this.authService.parseJwt(this.token);
       },error=>{
           if(error.status == 403){
              this.authError = 'Mot de passe invalide';
