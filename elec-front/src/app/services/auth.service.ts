@@ -62,7 +62,7 @@ export class AuthService {
  
       const decodedToken = helper.decodeToken(token);
       this.usernamejwt = decodedToken.sub;
-      return (this.usernamejwt  === this.username)
+      return (this.usernamejwt === this.username)
     }
   }
 
@@ -83,7 +83,12 @@ export class AuthService {
     this.roles = decodedToken.roles;
   
     console.log("admin"+this.roles);
-  
+  }
 
+  isAdmin(){
+    return this.roles.indexOf('ROLE_ADMIN')>=0;
+  }
+  isUser(){
+    return this.roles.indexOf('ROLE_USER')>=0;
   }
 }
