@@ -72,4 +72,18 @@ export class AuthService {
     localStorage.removeItem('username');
     this.isAuth = false;
   }
+
+  parseJwt(){
+    const helper = new JwtHelperService();
+ 
+    const decodedToken = helper.decodeToken(this.token);
+    this.username = decodedToken.sub;
+    localStorage.setItem('username',this.username);
+
+    this.roles = decodedToken.roles;
+  
+    console.log("admin"+this.roles);
+  
+
+  }
 }

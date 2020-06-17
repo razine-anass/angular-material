@@ -44,7 +44,7 @@ export class AuthComponent implements OnInit {
           this.token = response.headers.get('Authorization');
           localStorage.setItem('token',this.token);
           this.router.navigate(['body/bord/table']);
-          this.parseJwt();
+          this.authService.parseJwt();
       },error=>{
           if(error.status == 403){
              this.authError = 'Mot de passe invalide';
@@ -55,18 +55,6 @@ export class AuthComponent implements OnInit {
     );
   }
 
-  parseJwt(){
-    const helper = new JwtHelperService();
- 
-    const decodedToken = helper.decodeToken(this.token);
-    this.username = decodedToken.sub;
-    localStorage.setItem('username',this.username);
-
-    this.roles = decodedToken.roles;
   
-    console.log("admin"+this.roles);
-  
-
-  }
   
 }
