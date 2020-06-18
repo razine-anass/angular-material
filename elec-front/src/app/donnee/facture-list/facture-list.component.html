@@ -1,3 +1,35 @@
-<p>
-  facture-list works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Tableauw des Factures 
+    <div class="panel-body">
+      <table class="table table-striped">
+        <tr>
+          <th>id</th><th>Référence</th><th>Date</th><th>Status</th><th>Editer</th>
+        </tr>
+        <tr *ngFor="let fact of factures;let i=index">
+          <td>{{fact.id}}</td>
+          <td>{{fact.ref}}</td>
+          <td>{{fact.date}}</td>
+          <td>{{fact.statut}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="getFactureById(fact.id)" style="margin-left: 10px">Visuliser</button>
+            <button class="btn btn-danger" (click)="deleteFactureById(fact.id)" style="margin-left: 10px">Supprimer</button>
+            <button class="btn btn-success" (click)="expression" style="margin-left: 10px">Fusioner</button>
+          </td>
+        </tr>
+      </table>
+      <div></div>
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li >
+            <a  ></a>
+          </li>
+        </ul>
+       </div>
+
+    </div>
+  </div>
+</div>
+
+<div>
+ 
+</div>

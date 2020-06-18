@@ -18,7 +18,7 @@ export class FactureService {
       return this.http.get(this.url);
   }
 
-  getFactureById(id:number){
+  getFactureById(id:number):Observable<any>{
       return this.http.get(this.url+'/'+id);
   }
 

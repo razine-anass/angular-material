@@ -11,16 +11,19 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule, MatSortModule } from '@angular/material';
 import { FactureListComponent } from './facture-list/facture-list.component';
+import { CreateFactureComponent } from './create-facture/create-facture.component';
+import { FactureDetailsComponent } from './facture-details/facture-details.component';
 
 
 
 const appRoutes: Routes = [
   { path: 'update/:id',  component: UpdateChantierComponent },
   { path: 'details/:id', component: ChantierDetailsComponent },
+  { path: 'details-facture/:id', component: FactureDetailsComponent },
 ];
 
 @NgModule({
-  declarations: [ChantierDetailsComponent,ChantierListComponent,CreateChantierComponent,UpdateChantierComponent, FactureListComponent],
+  declarations: [ChantierDetailsComponent,ChantierListComponent,CreateChantierComponent,UpdateChantierComponent, FactureListComponent, CreateFactureComponent,FactureDetailsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,6 +34,6 @@ const appRoutes: Routes = [
     MatSortModule,
     RouterModule.forRoot(appRoutes)
   ],
-  exports: [ChantierDetailsComponent,ChantierListComponent,CreateChantierComponent, FactureListComponent]
+  exports: [ChantierDetailsComponent,ChantierListComponent,CreateChantierComponent, FactureListComponent, FactureDetailsComponent]
 })
 export class DonneeModule { }

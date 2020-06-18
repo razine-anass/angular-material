@@ -11,6 +11,12 @@ export class HeaderComponent implements OnInit {
   constructor(private authservice: AuthService) { }
 
   ngOnInit() {
+    let tokenExist = localStorage.getItem('token');
+    let usernameExist = localStorage.getItem('username');
+    if(tokenExist != null && usernameExist != null){
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
+    }
   }
 
 }

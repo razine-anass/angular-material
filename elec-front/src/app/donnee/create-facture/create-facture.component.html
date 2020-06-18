@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-body center"> Formulaire Création Facture
+      <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+             <form #form (ngSubmit)="onSubmit(form)">
+              <div class="form-group">
+                <label for="">Non traité</label>
+                <input type="checkbox">
+                <label for="">traité</label>
+                <input type="checkbox">
+                <label for="">Rejetté</label>
+                <input type="checkbox">
+              </div>
+               <div class="form-group">
+                 <label for="desciptif">Désciptif</label>
+                 <input type="text" class="form-control" name="desciptif" ngModel >
+               </div>
+               <div class="form-group">
+                 <label for=""></label>
+                 <input type="select">
+               </div>
+               <div class="form-group">
+                <button type="submit" class="btn btn-success">Submit</button>
+               </div>
+             </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

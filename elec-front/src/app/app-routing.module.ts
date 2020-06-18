@@ -12,6 +12,7 @@ import { JwtComponent } from './body/jwt/jwt.component';
 import { JwtChantierDetailsComponent } from './body/jwt-chantier-details/jwt-chantier-details.component';
 import { UserComponent } from './body/user/user.component';
 import { FactureListComponent } from './donnee/facture-list/facture-list.component';
+import { CreateFactureComponent } from './donnee/create-facture/create-facture.component';
 
 //const routes: Routes = [];
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path : 'body/user' , canActivate: [AuthGard] , component :UserComponent},
   { path : 'auth/logout', component : LogoutComponent},
   { path : 'factures', component : FactureListComponent },
+  { path : 'factures/creer', component : CreateFactureComponent },
   { path : 'body/jwt', component : JwtComponent, children:[ {path: 'details/:id',component: JwtChantierDetailsComponent} ]},
   { path : '', redirectTo:'body/bord/formulaire',pathMatch:'full'},
   { path : 'body/bord/bord' ,  component : BordComponent, children: [

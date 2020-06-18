@@ -76,6 +76,7 @@ export class AuthService {
   }
 
   parseJwt(token:string){
+
     const helper = new JwtHelperService();
  
     const decodedToken = helper.decodeToken(token);

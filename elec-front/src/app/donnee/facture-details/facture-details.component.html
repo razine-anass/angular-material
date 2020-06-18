@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading"> Detail facture 
+    <div class="panel-body">
+      <ul *ngIf="facture">
+        <li> <label><b>facture reference: </b></label>{{facture.ref}}</li>
+        <li> <label><b>facture date: </b></label> {{facture.date}}</li>
+        <li><label><b>facture statut: </b></label> {{facture.statut}}</li>
+          <ol *ngFor="let tache of facture.chantier.tache">
+            <li>
+              <label><b>Tache descriptif: </b></label>  {{tache.descriptif}}  <label><b>Tache prix: </b></label>   {{tache.prix}} 
+            </li>
+          </ol>
+      </ul>
+    </div>
+    <button (click)="back()" class="btn btn-primary">Back to Chantier List</button><br>
+  </div>
+</div>
