@@ -16,10 +16,13 @@
           <a routerLink="body/jwt">jwt</a>
         </li>
         <li  routerLinkActive="active">
-          <a *ngIf="authservice.isUserLoggedIn()" routerLink="body/bord/formulaire">Tableau de bord</a>
+          <a  routerLink="body/bord/formulaire">Tableau de bord</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="factures">Factures</a>
         </li>
           <li  routerLinkActive="active">
-            <a *ngIf="authservice.isUserLoggedIn()"  routerLink="body/bord/table">Chantier</a>
+            <a   routerLink="body/bord/table">Chantier</a>
         </li>
         <li  routerLinkActive="active">
           <a *ngIf="authservice.isUserLoggedIn()"  routerLink="body/bord/bord">Client</a>

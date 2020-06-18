@@ -11,6 +11,7 @@ import { AuthGard } from './services/auth-gard.service';
 import { JwtComponent } from './body/jwt/jwt.component';
 import { JwtChantierDetailsComponent } from './body/jwt-chantier-details/jwt-chantier-details.component';
 import { UserComponent } from './body/user/user.component';
+import { FactureListComponent } from './donnee/facture-list/facture-list.component';
 
 //const routes: Routes = [];
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path : 'body/bord/table' , canActivate: [AuthGard] , component : TableComponent},
   { path : 'body/user' , canActivate: [AuthGard] , component :UserComponent},
   { path : 'auth/logout', component : LogoutComponent},
+  { path : 'factures', component : FactureListComponent },
   { path : 'body/jwt', component : JwtComponent, children:[ {path: 'details/:id',component: JwtChantierDetailsComponent} ]},
   { path : '', redirectTo:'body/bord/formulaire',pathMatch:'full'},
   { path : 'body/bord/bord' ,  component : BordComponent, children: [
