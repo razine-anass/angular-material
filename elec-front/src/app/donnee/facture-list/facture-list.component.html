@@ -19,15 +19,18 @@
             </button>
             </td>
           <td>
-            <button    [disabled]="select"
+            <button    [hidden]="isExist"
              (click)="ajouterFusionner(fact.id,i);" style="margin-left: 10px">
               
               
              
-                <i [hidden]="!isExist">spinner</i>
-               <span [hidden]="isExist">Log In <mat-icon>arrow_forward</mat-icon></span>
+               
+               <span [hidden]="test(i,j)"> {{i}}Enlever{{j}} <mat-icon>arrow_forward</mat-icon></span>
                <!--  <span *ngIf="isExist">Ajouter <mat-icon>addchart</mat-icon></span> {{i}} {{j}}
                <span *ngIf="(!isExist)  && (i === j)">Enlever <mat-icon>remove-from_queue</mat-icon></span>-->
+            </button>
+            <button [hidden]="!isExist" (click)="deFusionner(fact.id,i);" > 
+              <i [hidden]="test(i,j)">{{i}}Ajouter{{j}}</i>
             </button>
           </td>
         </tr>

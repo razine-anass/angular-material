@@ -16,7 +16,7 @@ export class FactureListComponent implements OnInit {
   facturesPageable:Array<facture>;
   facture:facture;
   isExist:boolean = true;
-  j:number=-2;
+  j:number=0;
    tab:Array<number>=[];
 
   constructor(private factureService: FactureService,private router:Router,
@@ -97,7 +97,7 @@ export class FactureListComponent implements OnInit {
       this.j=i;
       this.isExist = false;
       this.panierService.addFactureToPanier(f);
-      this.tab.push(i);
+     
     } else {
       this.panierService.removeFacture(f);
       this.isExist = true;
@@ -106,7 +106,44 @@ export class FactureListComponent implements OnInit {
     
   }
 
-  test(i:number){
+  deFusionner(id:number,i:number){
+    const f =this.factures.find(facture=>
+      facture.id === id
+    );
+
+    this.isExist = this.panierService.isExist(f);
+
+    if(this.isExist === true){
+      this.j=i;
+      this.isExist = false;
+      this.panierService.addFactureToPanier(f);
+     
+    } else {
+      this.panierService.removeFacture(f);
+      this.isExist = true;
+    
+    }
+    
+  }
+
+
+
+  test(i:number,j:number):boolean{
+
+    if(j==0){
+        this.tab.push(i);
+        this.j=1;
+        return false;
+    }
+
+    if(j==1){
+      const index: number = this.tab.indexOf(i);
+      if (index !== -1) {
+        this.j=0;
+          this.tab.splice(index, 1);
+          return false;
+      }
+    }
       
   }
 
