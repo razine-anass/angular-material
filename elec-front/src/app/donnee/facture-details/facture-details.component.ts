@@ -22,7 +22,7 @@ export class FactureDetailsComponent implements OnInit {
     this.factureService.getFactureById(id).subscribe(
       (data: any)=>{
         console.log(data);
-        this.facture = data.body;
+        this.facture = data;
        },error=>{
         console.log();
        }

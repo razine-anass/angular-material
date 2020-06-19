@@ -9,7 +9,7 @@ import { UpdateChantierComponent } from './update-chantier/update-chantier.compo
 import { FormsModule } from '@angular/forms';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule, MatSortModule } from '@angular/material';
+import { MatFormFieldModule, MatSortModule, MatIconModule} from '@angular/material';
 import { FactureListComponent } from './facture-list/facture-list.component';
 import { CreateFactureComponent } from './create-facture/create-facture.component';
 import { FactureDetailsComponent } from './facture-details/facture-details.component';
@@ -22,16 +22,14 @@ const appRoutes: Routes = [
   { path: 'details-facture/:id', component: FactureDetailsComponent },
 ];
 
+const MaterialModule = [MatIconModule,MatTableModule,MatPaginatorModule,MatInputModule,MatFormFieldModule,MatSortModule]
+
 @NgModule({
   declarations: [ChantierDetailsComponent,ChantierListComponent,CreateChantierComponent,UpdateChantierComponent, FactureListComponent, CreateFactureComponent,FactureDetailsComponent],
   imports: [
     CommonModule,
     FormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatSortModule,
+    MaterialModule,
     RouterModule.forRoot(appRoutes)
   ],
   exports: [ChantierDetailsComponent,ChantierListComponent,CreateChantierComponent, FactureListComponent, FactureDetailsComponent]

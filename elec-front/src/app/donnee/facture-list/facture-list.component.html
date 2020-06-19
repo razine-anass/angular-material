@@ -3,7 +3,7 @@
     <div class="panel-body">
       <table class="table table-striped">
         <tr>
-          <th>id</th><th>Référence</th><th>Date</th><th>Status</th><th>Editer</th>
+          <th>id</th><th>Référence</th><th>Date</th><th>Status</th><th>Editer</th><th>Fusionner</th>
         </tr>
         <tr *ngFor="let fact of factures;let i=index">
           <td>{{fact.id}}</td>
@@ -11,9 +11,24 @@
           <td>{{fact.date}}</td>
           <td>{{fact.statut}}</td>
           <td>
-            <button class="btn btn-primary" (click)="getFactureById(fact.id)" style="margin-left: 10px">Visuliser</button>
-            <button class="btn btn-danger" (click)="deleteFactureById(fact.id)" style="margin-left: 10px">Supprimer</button>
-            <button class="btn btn-success" (click)="expression" style="margin-left: 10px">Fusioner</button>
+            <button class="btn btn-primary" (click)="getFactureById(fact.id)" style="margin-left: 10px">
+              <span >Visuliser</span><mat-icon  color="black"> zoom_in</mat-icon>
+            </button>
+            <button class="btn btn-danger" (click)="deleteFactureById(fact.id)" style="margin-left: 10px">
+              Supprimer <mat-icon>delete_forever</mat-icon>
+            </button>
+            </td>
+          <td>
+            <button    [disabled]="select"
+             (click)="ajouterFusionner(fact.id,i);" style="margin-left: 10px">
+              
+              
+             
+                <i [hidden]="!isExist">spinner</i>
+               <span [hidden]="isExist">Log In <mat-icon>arrow_forward</mat-icon></span>
+               <!--  <span *ngIf="isExist">Ajouter <mat-icon>addchart</mat-icon></span> {{i}} {{j}}
+               <span *ngIf="(!isExist)  && (i === j)">Enlever <mat-icon>remove-from_queue</mat-icon></span>-->
+            </button>
           </td>
         </tr>
       </table>

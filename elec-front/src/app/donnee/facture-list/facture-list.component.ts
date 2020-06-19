@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FactureService } from 'src/app/services/facture.service';
 import { facture } from 'src/app/models/facture.model';
 import { Router } from '@angular/router';
+import { PanierService } from 'src/app/services/panier.service';
+
 
 @Component({
   selector: 'app-facture-list',
@@ -13,11 +15,15 @@ export class FactureListComponent implements OnInit {
   factures:Array<facture>;
   facturesPageable:Array<facture>;
   facture:facture;
+  isExist:boolean = true;
+  j:number=-2;
+   tab:Array<number>=[];
 
-  constructor(private factureService: FactureService,private router:Router) { }
+  constructor(private factureService: FactureService,private router:Router,
+              private panierService: PanierService) { }
 
   ngOnInit() {
-    this.getFacturePageable(0,2);
+    this.getFacturesAll();
   }
 
   
@@ -32,52 +38,77 @@ export class FactureListComponent implements OnInit {
     );
 }
 
-getFactureById(id:number){
-  this.router.navigate(['details-facture', id]);
+  getFactureById(id:number){
+    this.router.navigate(['details-facture', id]);
 
-}
+  }
 
-getFacturePageable(page:number,size:number){
+  getFacturePageable(page:number,size:number){
 
-  this.factureService.getFacturePageable(page,size).subscribe(
-    (data: any[])=>{
-      console.log(data);
-      this.factures = data;
-    }, error =>{
-      console.log();
+    this.factureService.getFacturePageable(page,size).subscribe(
+      (data: any[])=>{
+        console.log(data);
+        this.factures = data;
+      }, error =>{
+        console.log();
+      }
+    )
+  }
+
+  creerFacture(facture:facture){
+    this.factureService.creerFacture(facture).subscribe(
+      data=>{
+        console.log(data);
+      },error=>{
+        console.log();
+      }
+    )
+  }
+
+  updateFacture(facture:facture){
+    this.factureService.updateFacture(facture).subscribe(
+      data=>{
+        console.log(data);
+      },error=>{
+        console.log();
+      }
+    )
+  }
+
+  deleteFactureById(id:number){
+    this.factureService.deleteFactureById(id).subscribe(
+      data=>{
+        console.log(data);
+        this.getFacturesAll();
+      },error=>{
+        console.log();
+      }
+    )
+  }
+
+  ajouterFusionner(id:number,i:number){
+    const f =this.factures.find(facture=>
+      facture.id === id
+    );
+
+    this.isExist = this.panierService.isExist(f);
+
+    if(this.isExist === false){
+      this.j=i;
+      this.isExist = false;
+      this.panierService.addFactureToPanier(f);
+      this.tab.push(i);
+    } else {
+      this.panierService.removeFacture(f);
+      this.isExist = true;
+    
     }
-  )
-}
+    
+  }
 
-creerFacture(facture:facture){
-  this.factureService.creerFacture(facture).subscribe(
-    data=>{
-      console.log(data);
-    },error=>{
-      console.log();
-    }
-  )
-}
+  test(i:number){
+      
+  }
 
-updateFacture(facture:facture){
-  this.factureService.updateFacture(facture).subscribe(
-    data=>{
-      console.log(data);
-    },error=>{
-      console.log();
-    }
-  )
-}
-
-deleteFactureById(id:number){
-  this.factureService.deleteFactureById(id).subscribe(
-    data=>{
-      console.log(data);
-      this.getFacturesAll();
-    },error=>{
-      console.log();
-    }
-  )
-}
 
 }

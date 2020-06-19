@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Chantier } from '../models/chantier.model';
-import { resolve } from 'url';
 import { facture } from '../models/facture.model';
 
 @Injectable({
@@ -18,7 +16,7 @@ export class FactureService {
       return this.http.get(this.url);
   }
 
-  getFactureById(id:number):Observable<any>{
+  getFactureById(id:number){
       return this.http.get(this.url+'/'+id);
   }
 

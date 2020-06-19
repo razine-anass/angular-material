@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
-
+const MaterialComponents = []
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialComponents
   ],
   exports: [HeaderComponent],
   providers: [
