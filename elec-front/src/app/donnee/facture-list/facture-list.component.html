@@ -32,6 +32,13 @@
             <button [hidden]="!isExist" (click)="deFusionner(fact.id,i);" > 
               <i [hidden]="test(i,j)">{{i}}Ajouter{{j}}</i>
             </button>
+
+            <button #lastNameInput id={{i}} expand="block" size="large" (click)="test1(day,lastNameInput)" ngDefaultControl 
+                       [(ngModel)]="days" [disabled]="checkIfFinnished(day)" >Ajouter</button>
+            <button #ref id={{i}} expand="block" size="large" (click)="test2(ref)"  
+                    hidden="true">Enlever</button>           
+
+ 
           </td>
         </tr>
       </table>

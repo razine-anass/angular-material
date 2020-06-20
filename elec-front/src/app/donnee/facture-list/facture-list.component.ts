@@ -147,5 +147,46 @@ export class FactureListComponent implements OnInit {
       
   }
 
+  tableau = [];
+ 
+  ajouter:any;
+  enlever:any;
+
+
+  test1(day,lastName: HTMLInputElement){
+    console.log(lastName);
+    lastName.hidden = true;
+    this.ajouter = lastName;
+   //if(this.tableau.includes(lastName.id)){
+    //  this.tableau.splice(this.tableau.indexOf(lastName.id),1);
+   //   console.log(this.tableau);
+   //}
+ //  else
+  // { 
+    this.tableau.push(lastName.id);
+    console.log(this.tableau);
+  // }
+  }
+
+  test2(ref: HTMLInputElement){
+    this.enlever = ref;
+    console.log(ref);
+    ref.hidden = true;
+   if(this.tableau.includes(ref.id)){
+    
+      this.tableau.splice(this.tableau.indexOf(ref.id),1);
+      console.log(this.tableau);
+   }
+  // else
+  // { 
+  //  this.tableau.push(ref.id);
+  //  console.log(this.tableau);
+ //  }
+  }
+
+  checkIfFinnished(item){
+     return  this.tableau.includes(item);
+   }
+
 
 }
