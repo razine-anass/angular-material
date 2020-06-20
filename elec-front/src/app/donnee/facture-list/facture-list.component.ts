@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FactureService } from 'src/app/services/facture.service';
 import { facture } from 'src/app/models/facture.model';
 import { Router } from '@angular/router';
@@ -18,6 +18,8 @@ export class FactureListComponent implements OnInit {
   isExist:boolean = true;
   j:number=0;
    tab:Array<number>=[];
+   @ViewChild('lastNameInput') lastNameInput:ElementRef;
+   @ViewChild('ref') ref:ElementRef;
 
   constructor(private factureService: FactureService,private router:Router,
               private panierService: PanierService) { }
@@ -151,30 +153,43 @@ export class FactureListComponent implements OnInit {
  
   ajouter:any;
   enlever:any;
+  expression:string='Ajouter';
+  expression2:string='Enlever';
 
 
   test1(day,lastName: HTMLInputElement){
     console.log(lastName);
+    
     lastName.hidden = true;
-    this.ajouter = lastName;
+    //this.ajouter = lastName;
+    this.ref.nativeElement.hidden=false;
    //if(this.tableau.includes(lastName.id)){
-    //  this.tableau.splice(this.tableau.indexOf(lastName.id),1);
-   //   console.log(this.tableau);
-   //}
- //  else
+   //  this.ref.nativeElement.hidden=false;
+  //    this.tableau.splice(this.tableau.indexOf(lastName.id),1);
+     // if(this.monElement.nativeElement.id == lastName.id){
+     //   this.monElement.nativeElement.hidden=true
+      //  this.monElement2.nativeElement.hidden=false
+      //}
+      
+     // console.log('sdfsdfsdfsdf'+this.monElement);
+  // }
+  // else
   // { 
+    //this.expression = 'Enlever'
     this.tableau.push(lastName.id);
     console.log(this.tableau);
   // }
   }
 
   test2(ref: HTMLInputElement){
-    this.enlever = ref;
+  //  this.enlever = ref;
     console.log(ref);
-    ref.hidden = true;
-   if(this.tableau.includes(ref.id)){
     
-      this.tableau.splice(this.tableau.indexOf(ref.id),1);
+    
+   if(this.tableau.includes(ref.id)){
+     this.lastNameInput.nativeElement.hidden=false;
+      ref.hidden = true;
+     // this.tableau.splice(this.tableau.indexOf(ref.id),1);
       console.log(this.tableau);
    }
   // else

@@ -19,24 +19,28 @@
             </button>
             </td>
           <td>
-            <button    [hidden]="isExist"
+            <!-- <button    [hidden]="isExist"
              (click)="ajouterFusionner(fact.id,i);" style="margin-left: 10px">
               
               
              
                
                <span [hidden]="test(i,j)"> {{i}}Enlever{{j}} <mat-icon>arrow_forward</mat-icon></span>
-               <!--  <span *ngIf="isExist">Ajouter <mat-icon>addchart</mat-icon></span> {{i}} {{j}}
-               <span *ngIf="(!isExist)  && (i === j)">Enlever <mat-icon>remove-from_queue</mat-icon></span>-->
+                <span *ngIf="isExist">Ajouter <mat-icon>addchart</mat-icon></span> {{i}} {{j}}
+               <span *ngIf="(!isExist)  && (i === j)">Enlever <mat-icon>remove-from_queue</mat-icon></span>
             </button>
             <button [hidden]="!isExist" (click)="deFusionner(fact.id,i);" > 
               <i [hidden]="test(i,j)">{{i}}Ajouter{{j}}</i>
-            </button>
-
-            <button #lastNameInput id={{i}} expand="block" size="large" (click)="test1(day,lastNameInput)" ngDefaultControl 
-                       [(ngModel)]="days" [disabled]="checkIfFinnished(day)" >Ajouter</button>
-            <button #ref id={{i}} expand="block" size="large" (click)="test2(ref)"  
-                    hidden="true">Enlever</button>           
+            </button>-->
+            <span #monElementHTML id={{i}} [innerText]="expression"></span>
+            <span hidden="true" #monElementHTML2 id={{i}} [innerText]="expression2" ></span>
+            
+            <button #lastNameInput id={{i}}  (click)="test1(day,lastNameInput)"  
+                        >
+                      Ajouter
+             </button>
+           <button #ref id={{i}}  hidden="true" (click)="test2(ref)"  
+                    >Enlever</button>         
 
  
           </td>
