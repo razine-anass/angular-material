@@ -16,7 +16,7 @@ export class FactureListComponent implements OnInit {
   facturesPageable:Array<facture>;
   facture:facture;
   isExist:boolean = true;
-  j:number=0;
+  
    tab:Array<number>=[];
    @ViewChild('lastNameInput') lastNameInput:ElementRef;
    @ViewChild('ref') ref:ElementRef;
@@ -96,7 +96,7 @@ export class FactureListComponent implements OnInit {
     this.isExist = this.panierService.isExist(f);
 
     if(this.isExist === false){
-      this.j=i;
+     
       this.isExist = false;
       this.panierService.addFactureToPanier(f);
      
@@ -116,7 +116,7 @@ export class FactureListComponent implements OnInit {
     this.isExist = this.panierService.isExist(f);
 
     if(this.isExist === true){
-      this.j=i;
+      
       this.isExist = false;
       this.panierService.addFactureToPanier(f);
      
@@ -130,39 +130,32 @@ export class FactureListComponent implements OnInit {
 
 
 
-  test(i:number,j:number):boolean{
-
-    if(j==0){
-        this.tab.push(i);
-        this.j=1;
-        return false;
-    }
-
-    if(j==1){
-      const index: number = this.tab.indexOf(i);
-      if (index !== -1) {
-        this.j=0;
-          this.tab.splice(index, 1);
-          return false;
-      }
-    }
-      
-  }
 
   tableau = [];
  
-  ajouter:any;
-  enlever:any;
-  expression:string='Ajouter';
-  expression2:string='Enlever';
 
 
-  test1(day,lastName: HTMLInputElement){
+  test1(d,lastName: HTMLInputElement){
     console.log(lastName);
-    
-    lastName.hidden = true;
+    //lastName.innerText='Enlever';
+     if(lastName.innerText==='Enlever'){
+
+      lastName.innerText='Ajouter';
+      
+      if(this.tableau.includes(lastName.id)){
+        this.tableau.splice(this.tableau.indexOf(lastName.id),1);
+        console.log('Enlever'+this.tableau);
+     }
+     
+     } else if(lastName.innerText==='Ajouter'){
+      lastName.innerText='Enlever';
+      this.tableau.push(lastName.id);
+      console.log('Ajouter'+this.tableau);
+     }
+
+   // lastName.hidden = true;
     //this.ajouter = lastName;
-    this.ref.nativeElement.hidden=false;
+   // this.ref.nativeElement.hidden=false;
    //if(this.tableau.includes(lastName.id)){
    //  this.ref.nativeElement.hidden=false;
   //    this.tableau.splice(this.tableau.indexOf(lastName.id),1);
@@ -176,8 +169,7 @@ export class FactureListComponent implements OnInit {
   // else
   // { 
     //this.expression = 'Enlever'
-    this.tableau.push(lastName.id);
-    console.log(this.tableau);
+   
   // }
   }
 

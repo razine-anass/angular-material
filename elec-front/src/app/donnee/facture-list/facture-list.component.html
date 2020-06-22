@@ -5,7 +5,7 @@
         <tr>
           <th>id</th><th>Référence</th><th>Date</th><th>Status</th><th>Editer</th><th>Fusionner</th>
         </tr>
-        <tr *ngFor="let fact of factures;let i=index">
+        <tr [ngStyle]="{'background-color': 1 === 2 ? '' : 'red'}" id={{i}} *ngFor="let fact of factures;let i=index">
           <td>{{fact.id}}</td>
           <td>{{fact.ref}}</td>
           <td>{{fact.date}}</td>
@@ -22,8 +22,8 @@
             <!-- <button    [hidden]="isExist"
              (click)="ajouterFusionner(fact.id,i);" style="margin-left: 10px">
               
-              
-             
+              <span #monElementHTML id={{i}} [innerText]="expression"></span>
+            <span hidden="true" #monElementHTML2 id={{i}} [innerText]="expression2" ></span>
                
                <span [hidden]="test(i,j)"> {{i}}Enlever{{j}} <mat-icon>arrow_forward</mat-icon></span>
                 <span *ngIf="isExist">Ajouter <mat-icon>addchart</mat-icon></span> {{i}} {{j}}
@@ -32,17 +32,9 @@
             <button [hidden]="!isExist" (click)="deFusionner(fact.id,i);" > 
               <i [hidden]="test(i,j)">{{i}}Ajouter{{j}}</i>
             </button>-->
-            <span #monElementHTML id={{i}} [innerText]="expression"></span>
-            <span hidden="true" #monElementHTML2 id={{i}} [innerText]="expression2" ></span>
+           
             
-            <button #lastNameInput id={{i}}  (click)="test1(day,lastNameInput)"  
-                        >
-                      Ajouter
-             </button>
-           <button #ref id={{i}}  hidden="true" (click)="test2(ref)"  
-                    >Enlever</button>         
-
- 
+            <button class="btn btn-success" #lastNameInput id={{i}}  (click)="test1(i,lastNameInput)"> Ajouter </button>
           </td>
         </tr>
       </table>
