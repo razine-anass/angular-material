@@ -17,7 +17,7 @@ export class FactureListComponent implements OnInit {
   facture:facture;
   isExist:boolean = true;
   
-   tab:Array<number>=[];
+   tableau:Array<any>=[];
    @ViewChild('lastNameInput') lastNameInput:ElementRef;
    @ViewChild('ref') ref:ElementRef;
 
@@ -88,56 +88,37 @@ export class FactureListComponent implements OnInit {
     )
   }
 
-  ajouterFusionner(id:number,i:number){
-    const f =this.factures.find(facture=>
-      facture.id === id
-    );
-
-    this.isExist = this.panierService.isExist(f);
-
-    if(this.isExist === false){
-     
-      this.isExist = false;
-      this.panierService.addFactureToPanier(f);
-     
-    } else {
-      this.panierService.removeFacture(f);
-      this.isExist = true;
+  fusionner(d,lastName: HTMLInputElement,l: HTMLInputElement){
+     const number = Number(lastName.id);
     
-    }
-    
-  }
+    const f:facture =this.factures.find(facture=>facture.id ==number);
+    //this.isExist = this.panierService.isExist(f);
 
-  deFusionner(id:number,i:number){
-    const f =this.factures.find(facture=>
-      facture.id === id
-    );
+    if(lastName.innerText==='Enlever'){
 
-    this.isExist = this.panierService.isExist(f);
-
-    if(this.isExist === true){
+      lastName.innerText='Ajouter';
       
-      this.isExist = false;
-      this.panierService.addFactureToPanier(f);
+      if(this.tableau.includes(lastName.id)){
+        this.tableau.splice(this.tableau.indexOf(lastName.id),1);
+        this.panierService.removeFacture(f);
+        console.log('Enlever  '+this.tableau);
+        console.log('Enlever  panier'+this.panierService.panier.factures);
+        l.style.backgroundColor="";
+     }
      
-    } else {
-      this.panierService.removeFacture(f);
-      this.isExist = true;
-    
-    }
-    
+     } else if(lastName.innerText==='Ajouter'){
+      l.style.backgroundColor="silver";
+      lastName.innerText='Enlever';
+      this.tableau.push(lastName.id);
+      this.panierService.addFactureToPanier(f);
+      console.log('Ajouter  '+this.tableau);
+      console.log('Ajouter au panier  '+this.panierService.panier.factures);
+     }
   }
 
-
-
-
-  tableau = [];
- 
-
-
-  test1(d,lastName: HTMLInputElement){
-    console.log(lastName);
-    //lastName.innerText='Enlever';
+  
+  test1(d,lastName: HTMLInputElement,l: HTMLInputElement){
+   
      if(lastName.innerText==='Enlever'){
 
       lastName.innerText='Ajouter';
@@ -145,55 +126,14 @@ export class FactureListComponent implements OnInit {
       if(this.tableau.includes(lastName.id)){
         this.tableau.splice(this.tableau.indexOf(lastName.id),1);
         console.log('Enlever'+this.tableau);
+        l.style.backgroundColor="";
      }
      
      } else if(lastName.innerText==='Ajouter'){
+      l.style.backgroundColor="silver";
       lastName.innerText='Enlever';
       this.tableau.push(lastName.id);
       console.log('Ajouter'+this.tableau);
      }
-
-   // lastName.hidden = true;
-    //this.ajouter = lastName;
-   // this.ref.nativeElement.hidden=false;
-   //if(this.tableau.includes(lastName.id)){
-   //  this.ref.nativeElement.hidden=false;
-  //    this.tableau.splice(this.tableau.indexOf(lastName.id),1);
-     // if(this.monElement.nativeElement.id == lastName.id){
-     //   this.monElement.nativeElement.hidden=true
-      //  this.monElement2.nativeElement.hidden=false
-      //}
-      
-     // console.log('sdfsdfsdfsdf'+this.monElement);
-  // }
-  // else
-  // { 
-    //this.expression = 'Enlever'
-   
-  // }
   }
-
-  test2(ref: HTMLInputElement){
-  //  this.enlever = ref;
-    console.log(ref);
-    
-    
-   if(this.tableau.includes(ref.id)){
-     this.lastNameInput.nativeElement.hidden=false;
-      ref.hidden = true;
-     // this.tableau.splice(this.tableau.indexOf(ref.id),1);
-      console.log(this.tableau);
-   }
-  // else
-  // { 
-  //  this.tableau.push(ref.id);
-  //  console.log(this.tableau);
- //  }
-  }
-
-  checkIfFinnished(item){
-     return  this.tableau.includes(item);
-   }
-
-
 }

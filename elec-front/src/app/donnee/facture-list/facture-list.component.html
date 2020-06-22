@@ -5,16 +5,16 @@
         <tr>
           <th>id</th><th>Référence</th><th>Date</th><th>Status</th><th>Editer</th><th>Fusionner</th>
         </tr>
-        <tr [ngStyle]="{'background-color': 1 === 2 ? '' : 'red'}" id={{i}} *ngFor="let fact of factures;let i=index">
+        <tr #tr [ngStyle]="{'background-color': 1 === 2 ? '' : ''}" id={{i}} *ngFor="let fact of factures;let i=index">
           <td>{{fact.id}}</td>
           <td>{{fact.ref}}</td>
           <td>{{fact.date}}</td>
           <td>{{fact.statut}}</td>
           <td>
-            <button class="btn btn-primary" (click)="getFactureById(fact.id)" style="margin-left: 10px">
+            <button class="btn btn-info btn-sm" (click)="getFactureById(fact.id)" style="margin-left: 10px">
               <span >Visuliser</span><mat-icon  color="black"> zoom_in</mat-icon>
             </button>
-            <button class="btn btn-danger" (click)="deleteFactureById(fact.id)" style="margin-left: 10px">
+            <button class="btn btn-danger btn-sm" (click)="deleteFactureById(fact.id)" style="margin-left: 10px">
               Supprimer <mat-icon>delete_forever</mat-icon>
             </button>
             </td>
@@ -34,7 +34,7 @@
             </button>-->
            
             
-            <button class="btn btn-success" #lastNameInput id={{i}}  (click)="test1(i,lastNameInput)"> Ajouter </button>
+            <button class="btn btn-success btn-xl" #lastNameInput id={{i}}  (click)="fusionner(i,lastNameInput,tr)"> Ajouter </button>
           </td>
         </tr>
       </table>

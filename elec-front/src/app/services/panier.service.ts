@@ -23,7 +23,7 @@ import { facture } from '../models/facture.model';
                     }
                  }
     loadPanier(){
-
+       this.panier.factures = [];
     }            
 
     public addFactureToPanier(facture:facture){
